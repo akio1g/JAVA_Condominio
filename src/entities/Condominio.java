@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Condominio {
+public class Condominio extends DataVencimento{
 
 	private List<Apartamento> apartamentos = new ArrayList<>();
 	private List<Despesa> despesas = new ArrayList<>();
 
-	public Condominio(List<Apartamento> apartamentos, List<Despesa> despesas) {
-		super();
+
+	
+	public Condominio(List<Apartamento> apartamentos, List<Despesa> despesas, int dataVencimento) {
+		super(dataVencimento);
 		this.apartamentos = apartamentos;
 		this.despesas = despesas;
 	}
@@ -30,10 +32,18 @@ public class Condominio {
 	public void setDespesas(List<Despesa> despesas) {
 		this.despesas = despesas;
 	}
-	
-	@Override
-	public String toString() {
-		return "Condominio [apartamentos=" + apartamentos + ", despesas=" + despesas + "]";
+
+	public void showAllContent() {
+		
+		for(Apartamento ap : apartamentos) {
+			String apName = "ap" + ap.getNumber();
+			
+			System.out.println(apName);
+			for(Despesa d : ap.getDespesas()) {
+				System.out.println(d);
+			}
+			System.out.println();
+		}
 	}
 
 	public void calcularDespesasApartamentos() {
@@ -49,9 +59,11 @@ public class Condominio {
 			for(Despesa d : despesasFiltradas) {
 				double valorDespesa = d.getValor() / totalQuartos * ap.getQuartos();
 				
-				Despesa despesaAp = new Despesa(d.getReferencia(), valorDespesa, d.getTipo());
+				Despesa despesaAp = new Despesa(d.getReference(), valorDespesa, d.getTipo());
 				ap.getDespesas().add(despesaAp);
 			}
 		}
 	}
+
+
 }

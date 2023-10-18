@@ -1,24 +1,28 @@
 package entities;
 
+import java.time.YearMonth;
+
 public class Despesa {
 	
-	private String referencia;
+	private YearMonth reference;
 	private double valor;
 	private TipoDespesa tipo;
 	
-	public Despesa(String referencia, double valor, TipoDespesa tipo) {
+	
+
+	public Despesa(YearMonth reference, double valor, TipoDespesa tipo) {
 		super();
-		this.referencia = referencia;
+		this.reference = reference;
 		this.valor = valor;
 		this.tipo = tipo;
 	}
 
-	public String getReferencia() {
-		return referencia;
+	public YearMonth getReference() {
+		return reference;
 	}
 
-	public void setReferencia(String referencia) {
-		this.referencia = referencia;
+	public void setReference(YearMonth reference) {
+		this.reference = reference;
 	}
 
 	public double getValor() {
@@ -39,6 +43,6 @@ public class Despesa {
 
 	@Override
 	public String toString() {
-		return "Despesa [referencia=" + referencia + ", valor=" + valor + ", tipo=" + tipo + "]";
+		return "\nMês de Referencia= " + reference + "- Valor: R$" + valor + " - Tipo" + tipo;
 	}
 }
